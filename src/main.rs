@@ -1,9 +1,11 @@
 fn main() {
     let count_total = 1_000_000_000;
     let count_total_string = format!("{}", count_total);
-    count_by_1(&count_total, &count_total_string);
-    double_from_1(&count_total, &count_total_string);
-    count_by_fibonacci_nums(&count_total, &count_total_string);
+    let functions = vec!(count_by_1, count_by_fibonacci_nums, double_from_1);
+
+    for function in functions {
+        function(&count_total, &count_total_string);
+    }
 }
 
 fn count_by_1(&count_total: &i32, count_total_string: &String) {
