@@ -11,8 +11,10 @@ fn main() {
 fn count_by_1(&count_total: &i32, count_total_string: &String) {
     println!("Counting by 1 to {}:", count_total_string);
     for i in 1..=count_total {
-        if i % 100_000_000 == 0 {
-            println!("{} ", i);
+        // Print progress every time another 10% of the total is counted
+        if i % (count_total as f64 * 0.1) as i32 == 0 {
+            let percentage_complete = (i as f64 / count_total as f64) * 100.0;
+            println!("{}%: {} ", percentage_complete, i);
         }
     }
 }
